@@ -8,6 +8,7 @@ const envSchema = z.object({
   NEXT_PUBLIC_APP_URL: z.string().url().optional(),
   NOTION_API_KEY: z.string().min(1),
   NOTION_DATABASE_ID: z.string().min(1),
+  NOTION_COMMENTS_DATABASE_ID: z.string().min(1),
 })
 
 export const env = envSchema.parse({
@@ -16,6 +17,7 @@ export const env = envSchema.parse({
   NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
   NOTION_API_KEY: process.env.NOTION_API_KEY,
   NOTION_DATABASE_ID: process.env.NOTION_DATABASE_ID,
+  NOTION_COMMENTS_DATABASE_ID: process.env.NOTION_COMMENTS_DATABASE_ID,
 })
 
 export type Env = z.infer<typeof envSchema>

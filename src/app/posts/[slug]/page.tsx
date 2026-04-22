@@ -7,6 +7,7 @@ import { Footer } from '@/components/layout/footer'
 import { Container } from '@/components/layout/container'
 import { Badge } from '@/components/ui/badge'
 import { NotionRenderer } from '@/components/blog/notion-renderer'
+import { CommentSection } from '@/components/blog/comment-section'
 import { fetchPages, fetchPageContent } from '@/lib/notion'
 
 export const revalidate = 3600
@@ -107,6 +108,8 @@ export default async function PostPage({ params }: Props) {
               <span />
             )}
           </nav>
+
+          <CommentSection postId={slug} />
         </Container>
       </main>
       <Footer />

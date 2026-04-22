@@ -97,6 +97,7 @@
 | 4-1  | `app/category/[category]/page.tsx` — 카테고리별 글 목록 페이지                                   | 🔲   |
 | 4-2  | `CategoryFilter.tsx` + `SearchBar.tsx` — 카테고리 필터 탭 + 제목 기준 실시간 검색 (`use client`) | 🔲   |
 | 4-3  | `generateMetadata` (글·카테고리 페이지) + `app/sitemap.ts` + `app/robots.ts`                     | 🔲   |
+| 4-4  | 댓글 기능: Notion 댓글 DB 연동 + `/api/comments` Route Handler + CommentSection 컴포넌트         | 🔲   |
 
 ### 완료 기준
 
@@ -104,6 +105,7 @@
 - [ ] 검색어 입력 시 제목 기준으로 실시간 필터링 동작
 - [ ] 글 상세 페이지 소셜 공유 시 OG 태그 정상 노출 확인
 - [ ] `/sitemap.xml` 접근 시 전체 글 URL 포함한 sitemap 반환
+- [ ] 댓글 작성 시 Notion DB에 저장되고 페이지에 즉시 표시
 
 ---
 

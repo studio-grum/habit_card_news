@@ -40,3 +40,11 @@ export interface Post {
 
 export type Category = string
 export type Tag = string
+
+export interface Comment {
+  id: string
+  postId: string
+  author: string
+  content: string
+  createdAt: string
+}
