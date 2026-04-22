@@ -1,0 +1,51 @@
+Shrimp Task Manager
+URL: http://localhost:50033/?lang=en
+Status: ONLINE
+
+========================================
+GOAL
+========================================
+Notion CMS 기반 개인 개발 블로그를 Next.js 15.5.3 App Router + TypeScript + TailwindCSS v4 + shadcn/ui 스택으로 구축한다.
+ROADMAP.md의 Phase 1 → Phase 5 순서를 엄격히 준수하며, 각 Phase의 완료 기준을 충족해야 다음 Phase로 진행한다.
+현재 프로젝트는 스타터 템플릿 상태이며 shadcn/ui 컴포넌트(Button, Card, Input, Badge, Skeleton 등)가 이미 설치되어 있다.
+Notion API 관련 코드는 전무하며 @notionhq/client 패키지도 미설치 상태다.
+
+========================================
+PROGRESS
+========================================
+Completed:   0 (0.0%)
+In Progress: 0 (0.0%)
+Pending:     20 (100.0%)
+Total:       20
+
+========================================
+TASK LIST
+========================================
+
+[Phase 1-1] 스타터 보일러플레이트 정리                         Pending
+[Phase 1-2] @notionhq/client 패키지 설치                       Pending
+[Phase 1-3] [사용자 직접] Notion Integration 생성 및 API 키 발급  Pending
+[Phase 1-4] 환경변수 설정 (.env.local + env.ts 확장)            Pending
+[Phase 1-5] [사용자 직접] Notion 데이터베이스 생성               Pending
+[Phase 1-6] 기본 레이아웃 구조 정비                             Pending
+[Phase 1-7] shadcn/ui 컴포넌트 설치 확인 및 추가                Pending
+
+[Phase 2-1] Notion 타입 정의 (src/lib/types/notion.ts)          Pending
+[Phase 2-2] Notion 클라이언트 초기화 (src/lib/notion.ts)        Pending
+[Phase 2-3] Header/Footer 컴포넌트 블로그용 교체                 Pending
+[Phase 2-4] PostCard 컴포넌트 구현                              Pending
+
+[Phase 3-1] 홈 글 목록 페이지 구현 (SSG + ISR)                  Pending
+[Phase 3-2] NotionRenderer 컴포넌트 구현                        Pending
+[Phase 3-3] 글 상세 페이지 + generateStaticParams 구현          Pending
+
+[Phase 4-1] 카테고리 페이지 구현                                Pending
+[Phase 4-2] CategoryFilter + SearchBar 컴포넌트 구현             Pending
+[Phase 4-3] 동적 메타데이터 + sitemap + robots 생성              Pending
+
+[Phase 5-1] next/image 적용 및 이미지 최적화                     Pending
+[Phase 5-2] 반응형 디자인 + 접근성 + Lighthouse 최적화           Pending
+[Phase 5-3] [사용자 직접] Vercel 배포                           Pending
+
+========================================
+© 2023 Shrimp Task Manager
