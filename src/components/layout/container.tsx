@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 
 interface ContainerProps {
-  children: React.ReactNode
+  children?: React.ReactNode
   className?: string
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'full'
 }

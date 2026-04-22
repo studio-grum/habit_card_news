@@ -1,0 +1,28 @@
+- generic [active] [ref=e1]:
+    - generic [ref=e2]:
+        - banner [ref=e3]:
+            - generic [ref=e5]:
+                - link "개발 블로그" [ref=e6] [cursor=pointer]:
+                    - /url: /
+                - button "테마 전환" [ref=e8]:
+                    - img
+                    - generic [ref=e9]: 테마 전환
+        - main [ref=e10]:
+            - generic [ref=e11]:
+                - article [ref=e12]:
+                    - generic [ref=e13]:
+                        - generic [ref=e14]:
+                            - generic [ref=e15]: 기타
+                            - generic [ref=e16]: project
+                        - heading "테스트 글" [level=1] [ref=e17]
+                        - paragraph [ref=e18]: 2026년 4월 22일
+                    - generic [ref=e19]:
+                        - paragraph [ref=e20]: 테스트
+                        - paragraph
+                - navigation [ref=e21]
+        - contentinfo [ref=e22]:
+            - paragraph [ref=e25]: © 2026 개발 블로그. Powered by Notion & Vercel.
+    - region "Notifications alt+T"
+    - button "Open Next.js Dev Tools" [ref=e31] [cursor=pointer]:
+        - img [ref=e32]
+    - alert [ref=e35]

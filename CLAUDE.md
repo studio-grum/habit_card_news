@@ -24,6 +24,7 @@ There are no tests yet. `check-all` is the required pre-commit gate (enforced by
 ### Notion Data Layer (to be built in `src/lib/notion.ts`)
 
 The planned Notion API layer:
+
 - `fetchPages()` — queries the database, filters `Status = 발행됨`, sorts by `Published` descending
 - `fetchPageContent(pageId)` — fetches block children for a page
 - Types live in `src/lib/types/notion.ts` (`Post`, `Block`, `Category`, `Tag`)

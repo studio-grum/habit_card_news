@@ -5,6 +5,11 @@ const nextConfig: NextConfig = {
   compress: true,
   images: {
     formats: ['image/webp', 'image/avif'],
+    remotePatterns: [
+      { hostname: 'prod-files-secure.s3.us-west-2.amazonaws.com' },
+      { hostname: 'www.notion.so' },
+      { hostname: 'images.unsplash.com' },
+    ],
   },
   experimental: {
     optimizePackageImports: ['lucide-react'],

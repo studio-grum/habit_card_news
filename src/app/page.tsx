@@ -1,17 +1,22 @@
-import { Footer } from '@/components/layout/footer'
 import { Header } from '@/components/layout/header'
-import { CTASection } from '@/components/sections/cta'
-import { FeaturesSection } from '@/components/sections/features'
-import { HeroSection } from '@/components/sections/hero'
+import { Footer } from '@/components/layout/footer'
+import { Container } from '@/components/layout/container'
+import { PostList } from '@/components/blog/post-list'
+import { fetchPages } from '@/lib/notion'
 
-export default function Home() {
+export const revalidate = 3600
+
+export default async function Home() {
+  const posts = await fetchPages()
+
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
-        <HeroSection />
-        <FeaturesSection />
-        <CTASection />
+        <Container className="py-8">
+          <h1 className="mb-8 text-3xl font-bold">최근 글</h1>
+          <PostList posts={posts} />
+        </Container>
       </main>
       <Footer />
     </div>

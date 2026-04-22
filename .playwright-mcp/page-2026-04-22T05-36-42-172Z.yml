@@ -1,0 +1,14 @@
+- generic [active] [ref=e1]:
+    - generic [ref=e2]:
+        - banner [ref=e3]:
+            - generic [ref=e5]:
+                - link "개발 블로그" [ref=e6] [cursor=pointer]:
+                    - /url: /
+                - button "테마 전환" [ref=e8]:
+                    - img
+                    - generic [ref=e9]: 테마 전환
+        - main [ref=e10]
+        - contentinfo [ref=e12]:
+            - paragraph [ref=e15]: © 2026 개발 블로그. Powered by Notion & Vercel.
+    - region "Notifications alt+T"
+    - alert [ref=e16]
