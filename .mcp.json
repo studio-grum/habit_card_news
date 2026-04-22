@@ -18,5 +18,14 @@
       "command": "npx",
       "args": ["shadcn@latest", "mcp"]
     }
+    "shrimp-task-manager": {
+      "command": "node",
+      "args": ["/Users/aidev/Documents/workspace/mcp-shrimp-task-manager/dist/index.js"],
+      "env": {
+        "DATA_DIR": "/Users/aidev/Documents/workspace/habit_card_news/shrimp_data",
+        "TEMPLATES_USE": "en",
+        "ENABLE_GUI": "true"
+      }
+    }
   }
 }
