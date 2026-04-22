@@ -17,7 +17,7 @@
     "shadcn": {
       "command": "npx",
       "args": ["shadcn@latest", "mcp"]
-    }
+    },
     "shrimp-task-manager": {
       "command": "node",
       "args": ["/Users/aidev/Documents/workspace/mcp-shrimp-task-manager/dist/index.js"],
