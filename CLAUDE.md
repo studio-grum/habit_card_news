@@ -1,43 +1,73 @@
-# 🤖 Claude Code 개발 지침
+# CLAUDE.md
 
-**claude-nextjs-starters**는 Next.js 15.5.3 + React 19 기반 모던 웹 애플리케이션 스타터 템플릿입니다.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## 🛠️ 핵심 기술 스택
+## Project Purpose
 
-- **Framework**: Next.js 15.5.3 (App Router + Turbopack)
-- **Runtime**: React 19.1.0 + TypeScript 5
-- **Styling**: TailwindCSS v4 + shadcn/ui (new-york style)
-- **Forms**: React Hook Form + Zod + Server Actions
-- **UI Components**: Radix UI + Lucide Icons
-- **Development**: ESLint + Prettier + Husky + lint-staged
+Personal developer blog backed by **Notion as a CMS**. Notion pages are fetched via `@notionhq/client`, filtered to `Status = 발행됨` (published), and rendered as a statically generated Next.js site deployed on Vercel. See `docs/PRD.md` for the full spec and `docs/ROADMAP.md` for current phase status.
 
-## 📚 개발 가이드
-
-- **🗺️ 개발 로드맵**: `@/docs/ROADMAP.md`
-- **📋 프로젝트 요구사항**: `@/docs/PRD.md`
-- **📁 프로젝트 구조**: `@/docs/guides/project-structure.md`
-- **🎨 스타일링 가이드**: `@/docs/guides/styling-guide.md`
-- **🧩 컴포넌트 패턴**: `@/docs/guides/component-patterns.md`
-- **⚡ Next.js 15.5.3 전문 가이드**: `@/docs/guides/nextjs-15.md`
-- **📝 폼 처리 완전 가이드**: `@/docs/guides/forms-react-hook-form.md`
-
-## ⚡ 자주 사용하는 명령어
+## Commands
 
 ```bash
-# 개발
-npm run dev         # 개발 서버 실행 (Turbopack)
-npm run build       # 프로덕션 빌드
-npm run check-all   # 모든 검사 통합 실행 (권장)
-
-# UI 컴포넌트
-npx shadcn@latest add button    # 새 컴포넌트 추가
+npm run dev          # dev server (Turbopack)
+npm run build        # production build (Turbopack)
+npm run check-all    # typecheck + lint + format:check (run before committing)
+npm run lint:fix     # auto-fix ESLint issues
+npm run format       # format all files with Prettier
+npx shadcn@latest add <component>  # add a shadcn/ui component to src/components/ui/
 ```
 
-## ✅ 작업 완료 체크리스트
+There are no tests yet. `check-all` is the required pre-commit gate (enforced by Husky + lint-staged).
+
+## Architecture
+
+### Notion Data Layer (to be built in `src/lib/notion.ts`)
+
+The planned Notion API layer:
+- `fetchPages()` — queries the database, filters `Status = 발행됨`, sorts by `Published` descending
+- `fetchPageContent(pageId)` — fetches block children for a page
+- Types live in `src/lib/types/notion.ts` (`Post`, `Block`, `Category`, `Tag`)
+
+Add `NOTION_API_KEY` and `NOTION_DATABASE_ID` to `.env.local`, then extend `src/lib/env.ts` (which uses Zod for env validation) to include them.
+
+### Rendering Strategy
+
+- **SSG + ISR**: pages use `generateStaticParams` + `export const revalidate = 3600`
+- **Server Components by default** — add `'use client'` only for interactivity (search filtering, theme toggle)
+- Notion blocks are rendered by `components/blog/NotionRenderer.tsx` (to be built); supported block types: paragraph, H1–H3, code, quote, ordered/unordered list, image
+
+### Route Structure
+
+```
+app/
+├── page.tsx                    # home — post list grid with category filter + search
+├── posts/[slug]/page.tsx       # post detail with NotionRenderer + prev/next nav
+└── category/[category]/page.tsx  # filtered post list by category
+```
+
+### Key Conventions
+
+- **Path aliases only** — always use `@/components/...`, `@/lib/...`, never relative `../` imports
+- **Named exports** for components, default exports for page files (`page.tsx`, `layout.tsx`)
+- **File naming**: kebab-case (`post-card.tsx`), component names PascalCase (`PostCard`)
+- **Color system**: use semantic CSS variables (`bg-background`, `text-foreground`, `text-muted-foreground`) — never hardcode Tailwind color values like `bg-gray-100`
+- **Class merging**: always use `cn()` from `@/lib/utils` (wraps `clsx` + `tailwind-merge`)
+- **Component size**: keep files under 300 lines; split if larger
+
+### Environment Variables
 
 ```bash
-npm run check-all   # 모든 검사 통과 확인
-npm run build       # 빌드 성공 확인
+# .env.local
+NOTION_API_KEY=secret_...
+NOTION_DATABASE_ID=...
+NEXT_PUBLIC_APP_URL=http://localhost:3000   # optional
 ```
 
-💡 **상세 규칙은 위 개발 가이드 문서들을 참조하세요**
+`src/lib/env.ts` validates env vars with Zod at startup — add any new vars there.
+
+## Tech Stack
+
+- Next.js 15.5.3 App Router + Turbopack, React 19, TypeScript 5
+- TailwindCSS v4 + shadcn/ui (new-york style) + `next-themes` for dark mode
+- React Hook Form + Zod for forms; `sonner` for toasts
+- `prettier-plugin-tailwindcss` auto-sorts Tailwind classes on save
